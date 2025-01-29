@@ -1,3 +1,4 @@
 streamlit
+pip install streamlit-option-menu
 pandas
 numpy
