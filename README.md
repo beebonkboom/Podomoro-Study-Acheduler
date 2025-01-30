@@ -1,4 +1,4 @@
-# [Dukioo](https://podomoro-study-scheduler.streamlit.app/)
+# [Podomi](https://podomoro-study-scheduler.streamlit.app/)
 
 This is a simple mini project that allowed me to apply my python knowledge and learn basic HTML and CSS through Streamlit's open-source app framework.
 
