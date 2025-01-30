@@ -6,18 +6,18 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import time
 
-
+import requests
 
 def main ():
-    st.set_page_config(page_title = "Dukioo", page_icon=":flower_playing_cards:")
+    st.set_page_config(page_title = "Podomi", page_icon=":flower_playing_cards:")
     schedule()
 
     
 def schedule():
 
    with st.sidebar:
-    choice = option_menu( menu_title = "Main Menu",options = ["Study Schedule", "Contact"] )
-
+    choice = option_menu( menu_title = "Main Menu",options = ["Study Schedule"] )
+    # choice = option_menu( menu_title = "Main Menu",options = ["Study Schedule", "Contact"] )
    if choice == "Study Schedule":
         st.title("Podomoro Study Schedule")
 
@@ -88,8 +88,8 @@ def schedule():
 
             st.markdown('<p class="big-font">P.S - if schedule or video content is changed, timer resets!</p>', unsafe_allow_html=True)
             
-   elif choice == "Contact":
-        contact()
+#    elif choice == "Contact":
+#         contact()
     
 
 
@@ -193,46 +193,55 @@ def video ():
             
 
 
+# def contact():
+#     col1, col2 = st.columns([5, 12], gap="large")
 
+#     with col1:
+#         with st.container():
+#             st.title("Contact Form 💌")
+#             st.subheader("Hi! I am the creator of this website")
 
-def contact():
-    col1, col2 = st.columns([5,12], gap=("large"))
-    with col1:
-        with st.container ():
-            st.title("Contact Form :love_letter:")
-            st.subheader("Hi! I am the creator of this website")
-
-            st.write(
-                """
-                Please let me know if there is any issues with the website or send in suggestions!
+#             st.write(
+#                 """
+#                 Please let me know if there are any issues with the website or send in suggestions!
                 
-                -- Dukioo Creator
-                """
-            )
-    with col2:
-        with st.container ():
-            st.markdown('###')
-            st.write("-------")
-            st.subheader("Contact Form here")
-            contact_form = """
-            <form action="236a7896f7347678e83045cee735f0a9" method="POST">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="email" name="email" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message here"></textarea>
-                <button type="submit">Send</button>
-            </form>
-            """
+#                 -- Dukioo Creator
+#                 """
+#             )
 
-            st.markdown(contact_form, unsafe_allow_html=True)
+#     with col2:
+#         with st.container():
+#             st.markdown("###")
+#             st.write("-------")
+#             st.subheader("Contact Form here")
 
-            # Use Local CSS File
-            def local_css(file_name):
-                with open(file_name) as f:
-                    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+#             with st.form("contact_form"):
+#                 name = st.text_input("Your Name")
+#                 email = st.text_input("Your Email")
+#                 message = st.text_area("Your Message")
 
+#                 submitted = st.form_submit_button("Send")
 
-            local_css("style/style.css")
+#                 if submitted:
+#                     if name and email and message:
+#                         response = requests.post(
+#                             "http://127.0.0.1:5000/submit",  # Update when deployed
+#                             json={"name": name, "email": email, "message": message},
+#                         )
+
+#                         if response.status_code == 200:
+#                             st.success("Message sent successfully!")
+#                         else:
+#                             st.error("Error sending message. Please try again.")
+#                     else:
+#                         st.error("All fields are required!")
+
+#             # Use Local CSS File
+#             def local_css(file_name):
+#                 with open(file_name) as f:
+#                     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+#             local_css("style/style.css")
+
 
 
 
